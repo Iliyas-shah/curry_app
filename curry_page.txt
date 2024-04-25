@@ -1,0 +1,775 @@
+//Experiment 2 ( basic widgets)
+/*
+import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+
+void main() {
+  runApp(const MyApp());
+}
+
+class MyApp extends StatefulWidget {
+  const MyApp({super.key});
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  String msg = "";
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'My App',
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple)
+        ),
+      home: Scaffold(
+        appBar: AppBar(
+          title: const Text("My App"),
+          backgroundColor: Colors.greenAccent,
+          centerTitle: true,
+          elevation: 30.0,
+          toolbarOpacity: 1,
+          actions: <Widget>[
+            IconButton(onPressed: () {
+              setState(() {
+                msg = "You pressed forward Button";
+              });
+            }, icon: const Icon(Icons.arrow_forward),
+          ),
+          IconButton(onPressed: (){
+            setState(() {
+              msg = "You pressed back button";
+            });
+          }, icon: const Icon(Icons.arrow_back)
+          )
+          ],
+          ),
+        body: Column(
+          children: [
+            Expanded(
+              child: Center(
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Container(
+                    color: Colors.amberAccent,
+                    child: Text(
+                      msg,
+                      textAlign: TextAlign.right,
+                      style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+                    )
+                  ),
+                  )
+                )
+              ),
+            
+            Expanded(
+              child: Center(
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Container(
+                    color: Colors.amberAccent,
+                    child: Text(
+                      msg,
+                      textAlign: TextAlign.right,
+                      style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+                    )
+                  ),
+                  )
+                )
+              ),
+            
+            ],
+          ),
+        ),
+      );
+  }
+}
+*/
+
+
+//Exp 3 ( Grid View )
+
+/*
+import 'package:flutter/material.dart';
+import 'package:device_preview/device_preview.dart';
+
+void main() {
+  runApp(const MyApp());
+}
+
+class MyApp extends StatefulWidget {
+  const MyApp({super.key});
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Experiment expt3',
+      theme: ThemeData(primaryColor: Colors.yellow.shade300),
+      home: Scaffold(
+        appBar: AppBar(
+          title: const Text('GridView'),
+          centerTitle: true,
+          backgroundColor: Colors.blue.shade300,
+        ),
+        body: GridView.count(
+          crossAxisCount: 4,
+          crossAxisSpacing: 4,
+          mainAxisSpacing: 4,
+          shrinkWrap: true,
+          scrollDirection: Axis.horizontal,
+          children: List.generate(5, (index) {
+            return Padding(
+              padding: const EdgeInsets.all(10),
+              child: Container(
+                decoration: const BoxDecoration(
+                    image: DecorationImage(
+                      image: NetworkImage('image/pic1.png'),
+                      fit: BoxFit.cover,
+                    ),
+                    borderRadius: BorderRadius.all(Radius.circular(20)
+                    )
+                    ),
+              ),
+            );
+          }),
+        ),
+      ),
+    );
+  }
+}
+*/
+
+//Exp 3 (List View)
+/*
+import 'package:flutter/material.dart';
+import 'package:device_preview/device_preview.dart';
+
+void main() {
+  runApp(const MyApp());
+}
+class MyApp extends StatefulWidget {
+  const MyApp({super.key});
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Experiment 3',
+      theme: ThemeData(primaryColor: Colors.yellow.shade300),
+      home: Scaffold(
+        appBar: AppBar(
+          title: const Text("ListView"),
+          centerTitle: true,
+          backgroundColor: Colors.blue.shade300, 
+        ),
+        body: 
+        ListView(
+          padding:const EdgeInsets.all(10),
+          shrinkWrap: true,
+          reverse:true,
+          // itemExtent: 100,
+          // scrollDirection: Axis.horizontal,
+          children: const [
+          Card(
+              child: ListTile(
+              leading: Icon(Icons.home),
+              title: Text("Home"),
+              textColor: Colors.red,
+            ),),
+            Card(
+              child: ListTile(
+              leading: Icon(Icons.info),
+              title: Text("About Us"),
+              textColor: Colors.blue,
+            ),),
+            Card(
+              child: ListTile(
+              leading: Icon(Icons.phone),
+              title: Text("Contact Us"),
+              textColor: Colors.blue,
+            ),
+          )
+        ],),
+      ),
+    );
+  }
+}
+*/
+
+
+// Form Validation (Exp 4)
+/*
+import 'package:flutter/material.dart'; 
+ 
+void main() => 
+runApp(const MyApp()); 
+ 
+ 
+class MyApp extends StatelessWidget { 
+  const MyApp({Key? key}) : super(key: key); 
+ 
+  @override 
+  Widget build(BuildContext context) { 
+    const appTitle="Form Validation Demo"; 
+ 
+    return MaterialApp( 
+      debugShowCheckedModeBanner: false, 
+      title: appTitle, 
+      home: Scaffold( 
+      appBar: AppBar( 
+      title: const Text(appTitle), 
+      ), 
+      body: const MyCustomForm(), 
+      ), 
+    ); 
+  } 
+} 
+ 
+class MyCustomForm extends StatefulWidget{ 
+  const MyCustomForm({Key? key}):super(key: key); 
+ 
+  @override 
+  State<StatefulWidget> createState() { 
+    return MyCustomFormState(); 
+  } 
+} 
+ 
+class MyCustomFormState extends State <MyCustomForm>{ 
+  final _formKey = GlobalKey<FormState>(); 
+ 
+  @override 
+  Widget build(BuildContext context) { 
+  return Form( 
+    key: _formKey, 
+    child: Column( 
+    crossAxisAlignment: CrossAxisAlignment.start, 
+    children: [ 
+      TextFormField( 
+        decoration: const InputDecoration( 
+        icon: Icon(Icons.person), 
+        hintText: 'Enter Your Name', 
+        labelText: 'Name', 
+      ), 
+        validator: (value) { 
+        if(value==null || value.isEmpty){ 
+          return 'Please enter some text'; 
+        } 
+          return null; 
+        }, 
+      ), 
+      TextFormField( 
+        decoration: const InputDecoration( 
+        icon: Icon(Icons.phone), 
+        hintText: 'Enter Your Phone No.', 
+        labelText: 'Phone No.', 
+      ), 
+      validator: (value) { 
+      if(value==null || value.isEmpty || value.length!=10 ){ 
+        return 'Please enter a valid phone no.'; 
+      } 
+      return null; 
+    }, 
+  ), 
+      TextFormField( 
+        decoration: const InputDecoration( 
+        icon: Icon(Icons.calendar_today), 
+        hintText: 'Enter Your DOB', 
+        labelText: 'DOB', 
+      ), 
+      validator: (value) { 
+      if(value==null || value.isEmpty){ 
+        return 'Please enter your dob'; 
+      } 
+      return null; 
+    }, 
+  ), 
+      ElevatedButton( 
+        onPressed: () { 
+          if(_formKey.currentState!.validate()){ 
+            ScaffoldMessenger.of(context).showSnackBar( 
+            const SnackBar(content: Text('Processing Data')), 
+          ); 
+ 
+        } 
+      }, 
+      child: const Text('Submit'), 
+    ) 
+    ], 
+  ), 
+); 
+} 
+}
+*/
+
+
+
+//Side Navigation Bar (Exp 5)
+
+/*
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: MyStatefulWidget(),
+      theme: ThemeData(
+        primaryColor: Colors.blue, // Customize primary color
+      // Customize accent color
+      ),
+    );
+  }
+}
+
+class MyStatefulWidget extends StatefulWidget {
+  @override
+  _MyStatefulWidgetState createState() => _MyStatefulWidgetState();
+}
+
+class _MyStatefulWidgetState extends State<MyStatefulWidget> {
+  String _appBarTitle = 'Home';
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(_appBarTitle),
+      ),
+      drawer: Drawer(
+        elevation: 20.0,
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: <Widget>[
+            DrawerHeader(
+              decoration: BoxDecoration(
+                color: Theme.of(context).primaryColor,
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  CircleAvatar(
+                    backgroundColor: Colors.white,
+                    child: Text("SIES", style: TextStyle(color: Theme.of(context).primaryColor)),
+                  ),
+                  SizedBox(height: 10),
+                  Text(
+                    "SIES GST",
+                    style: TextStyle(color: Colors.white, fontSize: 18),
+                  ),
+                  Text(
+                    "siesgst@gmail.com",
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ],
+              ),
+            ),
+            ListTile(
+              title: Text("Inbox"),
+              leading: Icon(Icons.mail),
+              onTap: () {
+                Navigator.pop(context);
+                setState(() {
+                  _appBarTitle = 'Inbox';
+                });
+              },
+            ),
+            Divider(
+              height: 0.1,
+            ),
+            ListTile(
+              title: Text("Primary"),
+              leading: Icon(Icons.inbox),
+              onTap: () {
+                Navigator.pop(context);
+                setState(() {
+                  _appBarTitle = 'Primary';
+                });
+              },
+            ),
+            ListTile(
+              title: Text("Social"),
+              leading: Icon(Icons.people),
+              onTap: () {
+                Navigator.pop(context);
+                setState(() {
+                  _appBarTitle = 'Social';
+                });
+              },
+            ),
+            ListTile(
+              title: Text("Promotions"),
+              leading: Icon(Icons.local_offer),
+              onTap: () {
+                Navigator.pop(context);
+                setState(() {
+                  _appBarTitle = 'Promotions';
+                });
+              },
+            ),
+          ],
+        ),
+      ),
+      body: Center(
+        child: Text(
+          'Welcome to $_appBarTitle',
+          style: TextStyle(fontSize: 20),
+        ),
+      ),
+    );
+  }
+}
+*/
+
+
+//Bottom Navigation ( Exp 5 )
+/*
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: MyStatefulWidget(),
+      theme: ThemeData(
+        primaryColor: Colors.blue, // Customize primary color
+      ),
+    );
+  }
+}
+
+class MyStatefulWidget extends StatefulWidget {
+  @override
+  _MyStatefulWidgetState createState() => _MyStatefulWidgetState();
+}
+
+class _MyStatefulWidgetState extends State<MyStatefulWidget> {
+  String _appBarTitle = 'MailScanner';
+  int _selectedIndex = 0;
+
+  static const List<Widget> _widgetOptions = <Widget>[
+    Text('MailScanner Screen'),
+    Text('Primary Screen'),
+    Text('Social Screen'),
+    Text('Promotions Screen'),
+  ];
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+      switch (index) {
+        case 0:
+          _appBarTitle = 'MailScanner';
+          break;
+        case 1:
+          _appBarTitle = 'Primary';
+          break;
+        case 2:
+          _appBarTitle = 'Social';
+          break;
+        case 3:
+          _appBarTitle = 'Promotions';
+          break;
+      }
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(_appBarTitle),
+      ),
+      body: Center(
+        child: _widgetOptions.elementAt(_selectedIndex),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: Colors.blue, // Background color of the navigation bar
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.mail),
+            label: 'Inbox',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.inbox),
+            label: 'Primary',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.people),
+            label: 'Social',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.local_offer),
+            label: 'Promotions',
+          ),
+        ],
+        currentIndex: _selectedIndex,
+        selectedItemColor: Color.fromARGB(255, 7, 134, 79), // Color of selected item
+        unselectedItemColor:  Colors.blue, // Color of unselected items
+        onTap: _onItemTapped,
+      ),
+    );
+  }
+}
+
+*/
+
+
+// Device Preview (Exp 8)
+/*
+import 'package:flutter/material.dart';
+import 'package:device_preview/device_preview.dart';
+
+void main() {
+  runApp(
+    DevicePreview(
+    enabled: true,
+    builder: (context) => MaterialApp(
+      useInheritedMediaQuery: true,
+      home: Scaffold(
+        appBar: AppBar(
+          title: const Text("My App"),
+          backgroundColor: Colors.greenAccent,
+          centerTitle: true,
+          elevation: 30.0,
+          toolbarOpacity: 1,
+          actions: <Widget>[
+            IconButton(onPressed: () {
+            }, icon: const Icon(Icons.arrow_forward),
+          ),
+          IconButton(onPressed: (){
+          }, icon: const Icon(Icons.arrow_back)
+          )
+          ],
+          ),
+        body: Column(
+          children: [
+            Expanded(
+              child: Center(
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Container(
+                    color: Colors.amberAccent,
+                    child: Text(
+                      "Shah",
+                      textAlign: TextAlign.right,
+                      style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+                    )
+                  ),
+                  )
+                )
+              ),
+            
+            Expanded(
+              child: Center(
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Container(
+                    color: Colors.amberAccent,
+                    child: Text(
+                      "Iliyas",
+                      textAlign: TextAlign.right,
+                      style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+                    )
+                  ),
+                  )
+                )
+              ),
+            
+            ],
+          ),
+        ),
+    )
+  ));
+}
+*/
+
+//Layout Builder (Exp 8)
+/*
+import 'package:flutter/material.dart';
+import 'package:device_preview/device_preview.dart';
+void main() => runApp(MyApp());
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  static const String _title = "Flutter Code Sample";
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title : _title,
+      home: MyStatelessWidget()
+    );
+  }
+}
+
+class MyStatelessWidget extends StatelessWidget {
+  const MyStatelessWidget({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text('LayoutBuilder Example')),
+      body: LayoutBuilder(
+        builder: (BuildContext context, BoxConstraints constraints) {
+        if(constraints.maxWidth > 600) {
+          return _buildWideContainers();
+        }else {
+          return _buildNormalContainer();
+        }
+      }
+      ),
+    );
+  }
+
+  Widget _buildNormalContainer() {
+    return Center(
+      child: Container(
+        height: 100.0,
+        width: 100.0,
+        color: Colors.red,
+        )
+      );
+  }
+
+  Widget _buildWideContainers() {
+    return Center(
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: <Widget>[
+          Container(
+            height: 100.0,
+            width: 100.0,
+            color: Colors.red,
+          ),
+          Container(
+            height: 100.0,
+            width: 100.0,
+            color: Colors.yellow,
+            )
+        ],
+      ),
+    );
+  }
+}
+
+*/
+
+//PWA
+//index.html
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="manifest" href="manifest.webmanifest">
+</head>
+<body>
+    <h1>pwa experiment</h1>
+    <p>Progressive web apps
+        A progressive web app (PWA) is an app that's built using web platform technologies, but that provides a user experience like that of a platform-specific app.
+        <br>
+        Like a website, a PWA can run on multiple platforms and devices from a single codebase. Like a platform-specific app, it can be installed on the device, can operate while offline and in the background, and can integrate with the device and with other installed apps.
+        Progressive Web Applications (PWAs) are apps built with web technologies that we probably all know and love, like HTML, CSS, and JavaScript. But they have the feel and functionality of an actual native app. Wait a minute! Native Apps, what do we mean by this?
+        <br>
+        A Native App is a software application built in a specific programming language for a specific device platform, either IOS or Android.
+        PWAs are built with the capabilities like push notifications and the ability to work offline. They are also built on and enhanced with modern APIs which makes it easy to deliver improved capabilities along with reliability and the ability to install them on any device.
+        <br>
+        PWAs takes advantage of the huge web ecosystem this is inclusive of the plugins, and community and the relative ease of deploying and keeping a website contrary to a native application which is pretty difficult to develop. This means you can build a PWA quickly and easily.
+        <br>
+        With its popularity many companies have shifted into the product, I tend to believe that this is because of its ability to run on an android and iOS without much difference. Some good examples of top companies who have their products as PWAs include: Twitter, Pintrest, Uber, Tiktok, Spotify, Jumia (a leading e-commerce site in Africa) etc...
+        <br>
+        A common feature about this products is that they are all installable on your home screen, able to work offline from where you last left and offer a comparable experience and features to their native apps.
+        <br>
+        Just like when building a native mobile app there are some expectations that should be met to make a good product for consumer use, the same thing applies to PWAs. Let's discuss what makes a good PWA.
+    </p>
+</body>
+<script>
+if(
+    'serviceWorker' in navigator
+    ){
+    window.addEventListener('load',function(){
+    navigator.serviceWorker.register('/sw.js',{scope:"/"}).then(function(registration){
+    console.log('Service worker registration successfull with scope:', registration.scope);
+    },function(err){
+    console.log('Service worker registration failed: ', err);
+    });
+    })
+    }
+    var CACHE_NAME = 'my-site-cache-v1';
+    var urlsToCache = [
+    '/',
+    'index.html',
+];
+self.addEventListener('install',function(event){
+event.waitUntil(
+caches.open(CACHE_NAME)
+.then(function(cache){
+console.log('Opened Cache');
+return cache.addAll(urlsToCache);
+})
+)
+});
+
+    </script>
+</html>
+
+
+//site.webmanifest
+
+{
+    "name":"supaStrikerShoe",
+    "short_name":"",
+    "icons":
+    [
+        {
+         "src": "/favicon-16x16.png",
+         "sizes": "16x16",
+         "type": "image/png",
+         "purpose": "any"
+         },
+         {
+         "src": "/favicon-32x32.png",
+         "sizes": "32x32",
+         "type": "image/png",
+         "purpose": "any"
+         },
+        {
+        "src":"/android-chrome-192x192.png",
+        "sizes":"192x192",
+        "type":"image/png",
+        "purpose":"any"
+        },
+        {
+        "src":"/android-chrome-512x512.png",
+        "sizes":"512x512","type":"image/png",
+        "purpose": "any"
+        }
+    ],
+                "id": "/?source=pwa",
+                "start_url": "/?source=pwa","theme_color":"#ffffff","background_color":"#ffffff","display":"standalone"
+}
