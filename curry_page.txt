@@ -687,6 +687,7 @@ class MyStatelessWidget extends StatelessWidget {
     <title>Document</title>
     <link rel="manifest" href="site.webmanifest">
     <link rel="manifest" href="manifest.webmanifest">
+    <link rel="service" href="sw.js">
 </head>
 <body>
     <h1>pwa experiment</h1>
